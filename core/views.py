@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
+from django.forms.models import model_to_dict
+from . models import Books
+
+
 # Create your views here.
-def index(request):
-    return HttpResponse('thi is working')
+def api_view(request, pk):
+    all_books = Books.objects.get(pk=pk)
+    return JsonResponse(model_to_dict(all_books))
