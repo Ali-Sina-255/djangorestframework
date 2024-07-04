@@ -15,6 +15,24 @@ class StudentListMixinsView(mixins.ListModelMixin, mixins.CreateModelMixin, gene
     def get(self, request):
         return self.list(request)
 
+    def post(self, request):
+        return self.create(request)
+
+
+class StudentDetailMixinsView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
+                              generics.GenericAPIView):
+    queryset = StudentModel.objects.all()
+    serializer_class = StudentSerializer
+
+    def get(self, request, pk):
+        return self.retrieve(request, pk)
+
+    def put(self, reqeust, pk):
+        return self.update(reqeust, pk)
+
+    def delete(self, request):
+        return self.destroy(request)
+
 
 class StudentListView(APIView):
     def get(self, request):
