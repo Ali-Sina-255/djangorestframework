@@ -6,6 +6,14 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from rest_framework import mixins, generics
+from rest_framework import viewsets
+
+
+# View set is used to create none primary field and primary fields in a
+
+class StudentViewSetView(viewsets.ModelViewSet):
+    queryset = StudentModel.objects.all()
+    serializer_class = StudentSerializer
 
 
 class StudentListMixinsView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):

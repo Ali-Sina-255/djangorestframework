@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "core.apps.CoreConfig",
     "student.apps.StudentConfig",
     "rest_framework",
+    "snapp.apps.SnappConfig",
 ]
 
 MIDDLEWARE = [
