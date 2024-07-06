@@ -3,7 +3,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -14,7 +13,6 @@ SECRET_KEY = "django-insecure-$#ak%u3pm2)pddjr=m@%zdf%r4)y0tz838_e3ru(p7^0z775p9
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -61,7 +59,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -71,7 +68,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -91,7 +87,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -103,7 +98,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -113,3 +107,26 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 2
+}
+
+#
+# .mtk1 { color: #d5ced9; }
+# // .mtk2 { color: #23262e; }
+# // .mtk3 { color: #5f6167; }
+# // .mtk4 { color: #00e8c6; }
+# // .mtk5 { color: #f39c12; }
+# // .mtk6 { color: #ffe66d; }
+# // .mtk7 { color: #c6c0ff; }
+# // .mtk8 { color: #ff00aa; }
+# // .mtk9 { color: #f92672; }
+# // .mtk10 { color: #c74ded; }
+# // .mtk11 { color: #7cb7ff; }
+# // .mtk12 { color: #ee5d43; }
+# // .mtk13 { color: #96e072; }
+# // .mtk14 { color: #6796e6; }
+# // .mtk15 { color: #cd9731; }
+# // .mtk16 { color: #f44747; }
+# // .mtk17 { color: #b267e6; }

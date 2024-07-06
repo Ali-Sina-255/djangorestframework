@@ -5,21 +5,48 @@ from rest_framework import generics
 from .models import Books, Author
 from .serializers import BookSerializer, AuthorSerializer
 from rest_framework.permissions import IsAuthenticated
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+
+
+class StudentPagination(LimitOffsetPagination):
+    page_size = 2
+
+
+class AuthorListApiView(generics.ListCreateAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+    pagination_class = StudentPagination
+
+
+class AuthorDetailApiView(generics.RetrieveUpdateAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+
+class BookListApiView(generics.ListCreateAPIView):
+    queryset = Books.objects.all()
+    serializer_class = BookSerializer
+    pagination_class = StudentPagination
+
+
+class BookDetailApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Books.objects.all()
+    serializer_class = BookSerializer
+    pagination_class = StudentPagination
+
+
+# @api_view(["GET"])
+# def author_list_api_view(request):
+#     if request.method == "GET":
+#         author = Author.objects.all()
+#         serializer = AuthorSerializer(author, many=True)
+#         return Response(serializer.data)
 
 
 @api_view(["GET"])
-def author_list_api_view(reqeust):
-    if reqeust.method == 'GET':
-        author = Author.objects.all()
-        serializer = AuthorSerializer(author, many=True)
-        return Response(serializer.data)
-
-
-@api_view(["GET"])
-def book_list_api_view(reqeust):
-    if reqeust.method == 'GET':
-        author = books.objects.all()
+def book_list_api_view(request):
+    if request.method == "GET":
+        author = request.objects.all()
         serializer = BookSerializer(author, many=True)
         return Response(serializer.data)
 
@@ -40,15 +67,13 @@ class BookApiLitView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
 
-
-
 @api_view(["GET", "POST", "DELETE"])
 def book_list_api_view(request):
     if request.method == "GET":
         author = Books.objects.all()
         serializer = BookSerializer(author, many=True)
         return Response(serializer.data)
-    if request.method == 'POST':
+    if request.method == "POST":
         serializer = BookSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
