@@ -14,8 +14,7 @@ class StudentListApiView(generics.ListCreateAPIView):
     queryset = StudentModel.objects.all()
     serializer_class = StudentSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    authentication_classes = [BaseAuthentication]
-    permission_classes = [IsAuthenticated]
+
     filterset_fields = ['name', 'score']
     ordering_fields = ['name', 'score']
     search_fields = ['^id', 'name']

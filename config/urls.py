@@ -6,4 +6,5 @@ urlpatterns = [
     path("core/", include("core.urls")),
     path("", include("student.urls")),
     path("api/", include("snapp.urls")),
+    path("flight/", include("flightApp.urls")),
 ]
