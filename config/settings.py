@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "snapp.apps.SnappConfig",
     'django_filters',
+    "flightApp.apps.FlightappConfig",
 ]
 
 MIDDLEWARE = [
