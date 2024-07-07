@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "student.apps.StudentConfig",
     "rest_framework",
     "snapp.apps.SnappConfig",
+    'django_filters',
 ]
 
 MIDDLEWARE = [

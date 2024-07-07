@@ -3,6 +3,23 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import StudentSerializer
 from .models import StudentModel
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+from rest_framework import generics
+from rest_framework.authentication import BaseAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+
+class StudentListApiView(generics.ListCreateAPIView):
+    queryset = StudentModel.objects.all()
+    serializer_class = StudentSerializer
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    authentication_classes = [BaseAuthentication]
+    permission_classes = [IsAuthenticated]
+    filterset_fields = ['name', 'score']
+    ordering_fields = ['name', 'score']
+    search_fields = ['^id', 'name']
+    ordering = ['score']
 
 
 @api_view(["GET", "POST"])
