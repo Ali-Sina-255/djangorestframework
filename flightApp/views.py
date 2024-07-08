@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Flight, Passenger, Reservation
 from .serializers import PassengerSerializer, ReservationSerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class ReservationFlights(APIView):
@@ -67,6 +68,7 @@ def find_flights(request):
 class FlightListApiViewSet(viewsets.ModelViewSet):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializers
+    permission_classes = (IsAuthenticated,)
 
 
 class PassengerApiViewSet(viewsets.ModelViewSet):
