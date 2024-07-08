@@ -7,6 +7,6 @@ router.register('flights', views.FlightListApiViewSet)
 router.register('passenger', views.PassengerApiViewSet)
 router.register('reservation', views.ReservationApiViewSet)
 urlpatterns = [
-    path("flightServices/", include(router.urls))
-
+    path("flightServices/", include(router.urls)),
+    path('flightServices/saveReservation/', views.ReservationFlights.as_view())
 ]

@@ -1,4 +1,6 @@
-from rest_framework import serializers, status
+import re
+
+from rest_framework import serializers
 from flightApp.models import Passenger, Flight, Reservation
 
 
@@ -6,6 +8,10 @@ class FlightSerializers(serializers.ModelSerializer):
     class Meta:
         model = Flight
         fields = '__all__'
+
+    def validate(self, attrs):
+        print("the validated data function is called")
+        return attrs
 
 
 class PassengerSerializer(serializers.ModelSerializer):

@@ -7,6 +7,10 @@ class BookSerializer(serializers.ModelSerializer):
         model = Books
         fields = "__all__"
 
+    def validate(self, attrs):
+        print('validate function is clled !')
+        return attrs
+
 
 class AuthorSerializer(serializers.ModelSerializer):
     books = BookSerializer(many=True, read_only=True)
